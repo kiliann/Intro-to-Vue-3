@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Vue Tutorial</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="./assets/styles.css"/>
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{'Prod: ' + producto }}</h1>
+    <h3>{{descripcion}}</h3>
+
+    <div class="cart">{{unidades+" Productos"}}</div>
+
+    <p v-if="stock > 5">Disponible</p>
+    <p v-else-if="stock > 0">¡Últimas unidades!</p>
+    <p v-else>No Disponible</p>
+
+    <div class="product-image">
+
+        <a :href=wikiCalcetines><img v-bind:src=imagen :title=tooltip></a>
+
+    </div>
+    <p v-if="enOferta">¡¡¡OFERTON!!</p>
+    <div v-for="color in colores" :key=color.cod>{{color.color}}</div>
+    <ul>
+        <li v-for="detalles, indice in detalles"  >{{ indice + ":" + detalles}}</li>
+    </ul>
+    <button class="button" v-on:click="unidades++">¡Comprar!</button>
+</div>
+
+
+<!-- Import Js -->
+<script src="app.js"></script>
+</body>
+</html>
