@@ -13,26 +13,29 @@
     <h1>{{'Prod: ' + producto }}</h1>
     <h3>{{descripcion}}</h3>
 
-    <div class="cart">{{unidades+" Productos"}}</div>
+    <div class="cart">Podructos({{unidades}})</div>
 
-    <p v-if="stock > 5">Disponible</p>
-    <p v-else-if="stock > 0">¡Últimas unidades!</p>
-    <p v-else>No Disponible</p>
+            <p v-if="stock > 5">Disponible</p>
+            <p v-else-if="stock > 0">¡Últimas unidades!</p>
+            <p v-else-if="stock = 0 ? totalStock = false : true">No Disponible</p>
 
-    <div class="product-image">
+            <div class="product-image">
 
-        <a :href=wikiCalcetines><img v-bind:src=imagen :title=tooltip></a>
+                <a :href=wikiCalcetines><img :class="{ 'out-of-stock-img': !totalStock }" v-bind:src=imagen :title=tooltip></a>
 
+            </div>
+            <p v-if="enOferta">¡¡¡OFERTON!!</p>
+            <div class="color-circle" v-for="color in colores" :key=color.cod
+                 @mouseover="updateImagenes(color.imagenes)"
+                 :style="{ backgroundColor: color.cod}">{{color.color}}
+            </div>
+            <ul>
+                <li v-for="detalles, indice in detalles">{{ indice + ":" + detalles}}</li>
+            </ul>
+            <button class="button" :class="{disabledButton: !totalStock}" :disabled="!totalStock" @click="añadirAlCarrito()">¡Comprar!</button>
+            <button class="button" @click="quitarDelCarrito()">¡Quitar del Carrito!</button>
+        </div>
     </div>
-    <p v-if="enOferta">¡¡¡OFERTON!!</p>
-    <div v-for="color in colores" :key=color.cod>{{color.color}}</div>
-    <ul>
-        <li v-for="detalles, indice in detalles"  >{{ indice + ":" + detalles}}</li>
-    </ul>
-    <button class="button" v-on:click="unidades++">¡Comprar!</button>
-</div>
-
-
 <!-- Import Js -->
 <script src="app.js"></script>
 </body>

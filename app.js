@@ -8,17 +8,34 @@ const app = Vue.createApp({
             imagen: 'assets/images/socks_blue.jpg',
             tooltip: 'sin agujeros',
             wikiCalcetines: 'https://es.wikipedia.org/wiki/Calcet%C3%ADn',
-            stock: '2',
+            stock: '6',
+            totalStock: true,
             enOferta: true,
             detalles: ['50% algodón', '30% lana', '20% otros materiales'],
             colores: [
-                {cod: 'A020', color:'Verde'},
-                {cod: "B022", color: 'Azul'}
+                {cod: "#265d26", color:'Verde', imagenes: './assets/images/socks_green.jpg'},
+                {cod: "#0c0c91", color: 'Azul', imagenes: './assets/images/socks_blue.jpg'},
             ],
-            unidades: 0
+            unidades: 0,
+
+
 
         }
+    },
+    methods: {
+        añadirAlCarrito() {
+            this.unidades += 1
+        },
+        quitarDelCarrito(){
+            if(this.unidades >=1){
+                this.unidades -= 1
+            }
+        },
+        updateImagenes(variantImage) {
+            this.imagen = variantImage
+        }
     }
+
 })
 
 window.onload = () => {const appMontada = app.mount('#app')}
