@@ -18,7 +18,7 @@ app.component('formulario', {
       <option>1</option>
     </select>
 
-    <input class="button" type="submit" value="submit">
+    <input class="button" type="submit" value="Enviar">
   </form>`,
     data() {
         return {
@@ -39,7 +39,7 @@ app.component('formulario', {
                 revision: this.revision,
                 rango: this.rango
             }
-        this.$emit('revisionProducto', productoRevision)
+        this.$emit('revision-Producto', productoRevision)
 
             this.nombre = ''
             this.revision = ''

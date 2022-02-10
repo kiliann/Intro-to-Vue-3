@@ -42,7 +42,7 @@ app.component('product-display', {
             </div>
     </div>
     <listarRevision :revision="revision"></listarRevision>
-    <formulario @revisionProducto="añadirRevision()"></formulario>
+    <formulario @revision-Producto="añadirRevision()"></formulario>
 </div>`,
     data() { //Datos que recibe la aplicacion
         return {
@@ -83,9 +83,9 @@ app.component('product-display', {
             this.selecionColor = index
 
         },
-        añadirRevision(reviso){
-            console.log(reviso)
-            this.revision.push(reviso)
+        añadirRevision(revision){
+
+            this.revision.push(revision)
 
         }
 
