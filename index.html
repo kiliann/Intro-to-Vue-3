@@ -10,33 +10,22 @@
 </head>
 <body>
 <div id="app">
-    <h1>{{'Prod: ' + producto }}</h1>
-    <h3>{{descripcion}}</h3>
+    <div class="nav-bar"></div>
 
-    <div class="cart">Podructos({{unidades}})</div>
+    <div class="cart">Podructos({{unidades.length}})</div>
+    <product-display :premium="premium" @añadir-al-carrito="updateCarro" @eliminar-del-carrito="eliminarDelCarro"></product-display>
 
-            <p v-if="stock > 5">Disponible</p>
-            <p v-else-if="stock > 0">¡Últimas unidades!</p>
-            <p v-else-if="stock = 0 ? totalStock = false : true">No Disponible</p>
 
-            <div class="product-image">
-
-                <a :href=wikiCalcetines><img :class="{ 'out-of-stock-img': !totalStock }" v-bind:src=imagen :title=tooltip></a>
-
-            </div>
-            <p v-if="enOferta">¡¡¡OFERTON!!</p>
-            <div class="color-circle" v-for="color in colores" :key=color.cod
-                 @mouseover="updateImagenes(color.imagenes)"
-                 :style="{ backgroundColor: color.cod}">{{color.color}}
-            </div>
-            <ul>
-                <li v-for="detalles, indice in detalles">{{ indice + ":" + detalles}}</li>
-            </ul>
-            <button class="button" :class="{disabledButton: !totalStock}" :disabled="!totalStock" @click="añadirAlCarrito()">¡Comprar!</button>
-            <button class="button" @click="quitarDelCarrito()">¡Quitar del Carrito!</button>
-        </div>
-    </div>
+</div>
 <!-- Import Js -->
 <script src="app.js"></script>
+<!-- Import Componentes -->
+<script src="./componentes/productosDeLaPantalla.js"></script>
+
+<script src="./componentes/detallesProductos.js"></script>
+<script src="./componentes/listarRevision.js"></script>
+<script src="./componentes/formulario.js"></script>
+
+
 </body>
 </html>
